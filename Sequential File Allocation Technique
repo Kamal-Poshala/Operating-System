@@ -1,0 +1,42 @@
+#include<stdio.h>
+int st,len;
+void fileAlloc(int file[]){
+    printf("Enter the starting Block : ");
+    scanf("%d",&st);
+    printf("Enter the length of the file : ");
+    scanf("%d",&len);
+    int f=0,i;
+    for(i=st;i<(st+len);i++){
+        if(file[i]==0)
+            f++;
+    }
+    printf("The value of the flag : %d",f);
+    printf("\nThe value of the length : %d",len);
+    if(f==len){
+        for(i=st;i<(st+len);i++){
+            if(file[i]==0)
+                file[i]=1;
+            printf("\n %d \t %d",i,file[i]);    
+        }
+        if(i!=(st+len-1)){
+            printf("File is allocated\n");
+        }
+    }
+    else
+            printf("File is not allocated");
+    int ch;
+    printf("Do you want to continue : YES(1)    NO(0)\n");
+    scanf("%d",&ch);
+    if(ch==1)
+        fileAlloc(file);
+    else
+        printf("\nThank You");
+    return;
+}
+void main(){
+    printf("File allocations are :\n");
+    int file[50];
+    for(int i=0;i<50;i++)
+        file[i]=0;
+    fileAlloc(file);    
+}
